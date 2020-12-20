@@ -101,6 +101,16 @@
 			if (Q24num1.value == "2" && Q24num2.value == "7" && Q24num3.value == "9" && Q24num4.value == "1" && Q24num5.value == "6" && Q24num6.value == "6" && Q24num7.value == "2" && Q24num8.value == "8") {
 				alert("Good");
 			} else {
+				document.getElementById('Q24num1').focus();
+				document.getElementById('Q24num1').value = "";
+				document.getElementById('Q24num2').value = "";
+				document.getElementById('Q24num3').value = "";
+				document.getElementById('Q24num4').value = "";
+				document.getElementById('Q24num5').value = "";
+				document.getElementById('Q24num6').value = "";
+				document.getElementById('Q24num7').value = "";
+				document.getElementById('Q24num8').value = "";
+				document.getElementById('Q24firm').disabled = true;
 				alert("Bad");
 			}
 		}
