@@ -1,8 +1,20 @@
 /* CSS Document */
-input{
+.userInput input{
 	margin: 10px;
 	height: 20px;
 	width: 20px;
+	text-align: center;
+	font-size: 1.2rem;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	border-bottom: 1px solid black;
+}
+
+.Input input{
+	margin: 10px;
+	height: 20px;
+	width: 80px;
 	text-align: center;
 	font-size: 1.2rem;
 	border: 0;

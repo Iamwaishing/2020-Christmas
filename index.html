@@ -38,13 +38,25 @@
 		<p><button type="button" class="btn btn-lg btn-primary homePages" onclick="homePage()">回主頁</button></p>
 	</div>
 	<div id="Q25" class="position-absolute top-50 start-50 translate-middle text-center" hidden>
-		<p>題目：請搵出正確答案，答案將會係我地相約等待嘅地方嘅提示</p>
-		<p>紅葉(答案係地鐵站名)</p>
+		<p>題目：請搵出正確答案，答案將會係我地相約等待嘅地方</p>
+		<p>請以以下Emoji猜出一地名</p>
+		<p>⭕☀️</p>
+		<div class="Input">
+			<input type="text" id="Q25ans" onkeyup="check25()">
+		</div>
+		<br>
+		<p><button type="button" class="btn btn-lg btn-primary" id="Q25firm" onclick="Q25firm()" disabled>確認答案</button></p>
 		<p><button type="button" class="btn btn-lg btn-primary homePages" onclick="homePage()">回主頁</button></p>
 	</div>
 	<div id="Q27" class="position-absolute top-50 start-50 translate-middle text-center" hidden>
 		<p>題目：請搵出正確答案，答案將會係我地相約等待嘅地方</p>
-		<p>♠️⬜</p>
+		<p>請以以下Emoji猜出一地名</p>
+		<p>♠️🔲</p>
+		<div class="Input">
+			<input type="text" id="Q27ans" onkeyup="check27()">
+		</div>
+		<br>
+		<p><button type="button" class="btn btn-lg btn-primary" id="Q27firm" onclick="Q27firm()" disabled>確認答案</button></p>
 		<p><button type="button" class="btn btn-lg btn-primary homePages" onclick="homePage()">回主頁</button></p>
 	</div>
 	<script>
@@ -62,6 +74,7 @@
 		}
 		function Q27() {
 			document.getElementById('Q27').hidden = false;
+			document.getElementById('Q27ans').focus();
 		}
 		function homePage() {
 			document.getElementById('chooseDate').hidden = false;
@@ -102,7 +115,7 @@
 			var Q24num7 = document.getElementsByClassName('Q24num')[6];
 			var Q24num8 = document.getElementsByClassName('Q24num')[7];
 			if (Q24num1.value == "2" && Q24num2.value == "7" && Q24num3.value == "9" && Q24num4.value == "1" && Q24num5.value == "6" && Q24num6.value == "6" && Q24num7.value == "2" && Q24num8.value == "8") {
-				alert("Good~答岩左啦，用呢個提示搵出我地相約等待嘅地方啦！\n\r 搵唔到就直接問我啦😘");
+				alert("Good~答岩左啦，用呢個提示搵出我地相約等待嘅地方啦！\n\r 學完車就嚟搵我啦😘");
 			} else {
 				document.getElementById('Q24num1').value = "";
 				document.getElementById('Q24num2').value = "";
@@ -115,6 +128,40 @@
 				document.getElementById('Q24firm').disabled = true;
 				alert("對唔住，答案錯左😢");
 				document.getElementById('Q24num1').focus();
+			}
+		}
+		
+		function check27() {
+			if (document.getElementById('Q27ans').value != null) {
+				document.getElementById('Q27firm').disabled = false;
+			}
+		}
+		
+		function Q27firm() {
+			if (document.getElementById('Q27ans').value == '葵芳') {
+				alert("Good~答岩左啦，11點係葵芳地鐵站E出口等啦😘");
+			} else {
+				document.getElementById('Q27ans').value = "";
+				document.getElementById('Q27firm').disabled = true;
+				alert("對唔住，答案錯左😢");
+				document.getElementById('Q27ans').focus();
+			}
+		}
+		
+		function check25() {
+			if (document.getElementById('Q25ans').value != null) {
+				document.getElementById('Q25firm').disabled = false;
+			}
+		}
+		
+		function Q25firm() {
+			if (document.getElementById('Q25ans').value == '元朗') {
+				alert("Good~答岩左啦，11點係元朗地鐵站K出口等啦😘");
+			} else {
+				document.getElementById('Q25ans').value = "";
+				document.getElementById('Q25firm').disabled = true;
+				alert("對唔住，答案錯左😢");
+				document.getElementById('Q25ans').focus();
 			}
 		}
 	/** End of Question page **/
