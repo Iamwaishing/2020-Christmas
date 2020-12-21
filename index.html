@@ -172,14 +172,14 @@
 	/** End of Moment count time JS **/
 
 	/** Start of change button state JS **/
-		switch (now.date()) {
-			case 23:
+		switch (true) {
+			case now.date() >= 23:
 				document.getElementById('24btn').disabled = false;
 				break;
-			case 24:
+			case now.date() >= 24:
 				document.getElementById('25btn').disabled = false;
 				break;
-			case 26:
+			case now.date() >= 26:
 				document.getElementById('27btn').disabled = false;
 				break;
 		}
