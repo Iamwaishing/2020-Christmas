@@ -38,6 +38,7 @@
 		<p>**部份答案可以係影片入面搵到**</p>
 		<p><iframe src="https://www.youtube.com/embed/w0u1FWi5ARA" width="auto" frameborder="0" allowfullscreen></iframe></p>
 		<p>我地相識嘅日期(兩個位) <br> + <br> 我生日月份(一個位) <br> + <br> 你生日日期+1(兩個位) <br> + <br> 我地第一次錫錫日期(例如12月24日 = 1224)乘6之後減50(三個位)</p>
+		<p>答案：</p>
 		<div class="userInput">
 			<input type="tel" id="Q24num1" maxlength="1" class="Q24num" onkeyup="clickEvent(this,'Q24num2');check()">
 			<input type="tel" id="Q24num2" maxlength="1" class="Q24num" onkeyup="clickEvent(this,'Q24num3');check()">
@@ -56,6 +57,7 @@
 		<p>題目：請搵出正確答案，答案將會係我地相約等待嘅地方</p>
 		<p>請以以下Emoji猜出一地名(兩個字)</p>
 		<p><img src="pic/Q25.png"></p>
+		<p>答案：</p>
 		<div class="Input">
 			<input type="text" id="Q25ans" onkeyup="check25()">
 		</div>
@@ -67,6 +69,7 @@
 		<p>題目：請搵出正確答案，答案將會係我地相約等待嘅地方</p>
 		<p>請以以下Emoji猜出一地名(兩個字)</p>
 		<p><img src="pic/Q27.png"></p>
+		<p>答案：</p>
 		<div class="Input">
 			<input type="text" id="Q27ans" onkeyup="check27()">
 		</div>
@@ -234,15 +237,12 @@
 		}
 		function Q24() {
 			document.getElementById('Q24').hidden = false;
-			document.getElementById('Q24num1').focus();
 		}
 		function Q25() {
 			document.getElementById('Q25').hidden = false;
-			document.getElementById('Q25ans').focus();
 		}
 		function Q27() {
 			document.getElementById('Q27').hidden = false;
-			document.getElementById('Q27ans').focus();
 		}
 		function homePage() {
 			document.getElementById('chooseDate').hidden = false;
