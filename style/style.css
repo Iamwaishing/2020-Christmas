@@ -8,7 +8,8 @@
 	border: 0;
 	outline: 0;
 	background: transparent;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid white;
+	color: white;
 }
 .Input input{
 	margin: 10px;
@@ -19,5 +20,111 @@
 	border: 0;
 	outline: 0;
 	background: transparent;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid white;
+	color: white;
+}
+
+p {
+	color: white;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #C40003!important;
+  border-color: yellow!important;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active:hover{
+  color: #fff;
+  background-color: brown!important;
+  border-color: darkkhaki!important;
+}
+
+/* Start of popup css */
+:root {
+	--modal-duration: 1s;
+	--modal-color: #428bca;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+	margin: 6% auto!important;
+	width: 60%!important;
+	box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17)!important;
+	animation-name: modalopen!important;
+	animation-duration: var(--modal-duration)!important;
+	height: 70vh!important;
+}
+
+.modal-body {
+	padding: 0px !important;
+	background-image: url("../pic/bg2.jpg");
+	background-color: #464646;
+}
+
+.close {
+	color: black!important;
+	float: right;
+	font-size: 60px!important;
+	color: #fff;
+}
+
+.close:hover,
+.close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.popuptop {
+	z-index: 1!important;
+	position: absolute!important;
+	width: 100%!important;
+}
+
+.popupclose {
+	z-index: 2!important;
+	position: absolute!important;
+	width: 100%!important;
+}
+
+@keyframes modalopen {
+	from {
+		opacity: 0;
+  }
+	to {
+		opacity: 1;
+	}
+}
+
+@media (max-width: 769px) {
+	.modal-content {
+		margin: 25% 5%!important;
+		width: 90%!important;
+	}
+}
+/* End of popup css */
+
+.center {
+	text-align: center;
+}
+
+#snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1000;
 }

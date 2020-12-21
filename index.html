@@ -11,17 +11,32 @@
 	<script src="javaScript/moment-with-locales.js" type="text/javascript"></script>
 	<title>2020 Christmas event</title>
 </head>
-<body>
+<body background="pic/bg.png">
+	<div id="snow"></div>
+	<audio loop id="playBG">
+		<source src="mp3/JingleBells.mp3">
+	</audio>
+	<audio loop id="play24">
+		<source src="mp3/SilentNight.mp3">
+	</audio>
+	<audio loop id="play25">
+		<source src="mp3/WeWishYouAMerryChristmas.mp3">
+	</audio>
+	<audio loop id="play27">
+		<source src="mp3/O-HolyNight.mp3">
+	</audio>
 	<div id="chooseDate" class="position-absolute top-50 start-50 translate-middle text-center">
 		<p>題目嘅答案係同我地相約等待嘅地方相關</p>
 		<p>(題目會係對應日子前一日就可以作答)</p>
-		<p><button type="button" id="24btn" class="btn btn-lg btn-primary" disabled onclick="goToQuestion();Q24()">12月24日題目</button></p>
-		<p><button type="button" id="25btn" class="btn btn-lg btn-primary" disabled onclick="goToQuestion();Q25()">12月25日題目</button></p>
-		<p><button type="button" id="27btn" class="btn btn-lg btn-primary" disabled onclick="goToQuestion();Q27()">12月27日題目</button></p>
+		<p><button type="button" id="24btn" class="btn btn-lg btn-primary" disabled onclick="goToQuestion();Q24();play24()"><img src="pic/Christmas-Eve.png" width="70" height="70">12月24日題目</button></p>
+		<p><button type="button" id="25btn" class="btn btn-lg btn-primary" disabled onclick="goToQuestion();Q25();play25()"><img src="pic/Christmas-Day.png" width="70" height="70">12月25日題目</button></p>
+		<p><button type="button" id="27btn" class="btn btn-lg btn-primary" disabled onclick="goToQuestion();Q27();play27()"><img src="pic/2nd-anniversary.png" width="70" height="70">12月27日題目</button></p>
 	</div>
 
 	<div id="Q24" class="position-absolute top-50 start-50 translate-middle text-center" hidden>
 		<p>題目：請搵出正確答案，答案將會係我地相約等待嘅地方嘅提示</p>
+		<p>**部份答案可以係影片入面搵到**</p>
+		<p><iframe src="https://www.youtube.com/embed/w0u1FWi5ARA" width="auto" frameborder="0" allowfullscreen></iframe></p>
 		<p>我地相識嘅日期(兩個位) <br> + <br> 我生日月份(一個位) <br> + <br> 你生日日期+1(兩個位) <br> + <br> 我地第一次錫錫日期(例如12月24日 = 1224)乘6之後減50(三個位)</p>
 		<div class="userInput">
 			<input type="tel" id="Q24num1" maxlength="1" class="Q24num" onkeyup="clickEvent(this,'Q24num2');check()">
@@ -35,31 +50,183 @@
 		</div>
 		<br>
 		<p><button type="button" class="btn btn-lg btn-primary" id="Q24firm" onclick="Q24firm()" disabled>確認答案</button></p>
-		<p><button type="button" class="btn btn-lg btn-primary homePages" onclick="homePage()">回主頁</button></p>
+		<p><button type="button" class="btn btn-lg btn-primary homePages" onclick="homePage();playBG()">回主頁</button></p>
 	</div>
 	<div id="Q25" class="position-absolute top-50 start-50 translate-middle text-center" hidden>
 		<p>題目：請搵出正確答案，答案將會係我地相約等待嘅地方</p>
-		<p>請以以下Emoji猜出一地名</p>
-		<p>⭕☀️</p>
+		<p>請以以下Emoji猜出一地名(兩個字)</p>
+		<p><img src="pic/Q25.png"></p>
 		<div class="Input">
 			<input type="text" id="Q25ans" onkeyup="check25()">
 		</div>
 		<br>
 		<p><button type="button" class="btn btn-lg btn-primary" id="Q25firm" onclick="Q25firm()" disabled>確認答案</button></p>
-		<p><button type="button" class="btn btn-lg btn-primary homePages" onclick="homePage()">回主頁</button></p>
+		<p><button type="button" class="btn btn-lg btn-primary homePages" onclick="homePage();playBG()">回主頁</button></p>
 	</div>
 	<div id="Q27" class="position-absolute top-50 start-50 translate-middle text-center" hidden>
 		<p>題目：請搵出正確答案，答案將會係我地相約等待嘅地方</p>
-		<p>請以以下Emoji猜出一地名</p>
-		<p>♠️🔲</p>
+		<p>請以以下Emoji猜出一地名(兩個字)</p>
+		<p><img src="pic/Q27.png"></p>
 		<div class="Input">
 			<input type="text" id="Q27ans" onkeyup="check27()">
 		</div>
 		<br>
 		<p><button type="button" class="btn btn-lg btn-primary" id="Q27firm" onclick="Q27firm()" disabled>確認答案</button></p>
-		<p><button type="button" class="btn btn-lg btn-primary homePages" onclick="homePage()">回主頁</button></p>
+		<p><button type="button" class="btn btn-lg btn-primary homePages" onclick="homePage();playBG()">回主頁</button></p>
 	</div>
+	
+	<div id="my-modal" class="modal" onclick="playBG()">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="center popupclose">
+					<p><span class="close">&times;</span></p><br><br>
+				</div>
+				<div class="position-absolute top-50 start-50 translate-middle center">
+					<strong><h1>歡迎嚟到聖誕Quiz之答岩就知邊到等~</h1></strong><br>
+					<strong><h3>今日係<span id="todayDate"></span><span id="todayQuiz"></span></h3></strong>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script>
+	/** Start of snow JS **/
+		document.addEventListener('DOMContentLoaded', function(){
+		var script = document.createElement('script');
+		script.src = 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js';
+		script.onload = function(){
+			particlesJS("snow", {
+				"particles": {
+					"number": {
+						"value": 200,
+						"density": {
+							"enable": true,
+							"value_area": 800
+						}
+					},
+					"color": {
+						"value": "#ffffff"
+					},
+					"opacity": {
+						"value": 0.7,
+						"random": false,
+						"anim": {
+							"enable": false
+						}
+					},
+					"size": {
+						"value": 5,
+						"random": true,
+						"anim": {
+							"enable": false
+						}
+					},
+					"line_linked": {
+						"enable": false
+					},
+					"move": {
+						"enable": true,
+						"speed": 5,
+						"direction": "bottom",
+						"random": true,
+						"straight": false,
+						"out_mode": "out",
+						"bounce": false,
+						"attract": {
+							"enable": true,
+							"rotateX": 300,
+							"rotateY": 1200
+						}
+					}
+				},
+				"interactivity": {
+					"events": {
+						"onhover": {
+							"enable": false
+						},
+						"onclick": {
+							"enable": false
+						},
+						"resize": false
+					}
+				},
+				"retina_detect": true
+			});
+		}
+		document.head.append(script);
+		});
+	/** End of snow JS **/
+	/** Start of play music **/
+		function playBG() {
+			var audioBG = document.getElementById("playBG");
+			var audio24 = document.getElementById("play24");
+			var audio25 = document.getElementById("play25");
+			var audio27 = document.getElementById("play27");
+			audioBG.play();
+			audio24.pause();
+			audio25.pause();
+			audio27.pause();
+		}
+		function play24() {
+			var audioBG = document.getElementById("playBG");
+			var audio24 = document.getElementById("play24");
+			var audio25 = document.getElementById("play25");
+			var audio27 = document.getElementById("play27");
+			audioBG.pause();
+			audio24.play();
+			audio25.pause();
+			audio27.pause();
+		}
+		function play25() {
+			var audioBG = document.getElementById("playBG");
+			var audio24 = document.getElementById("play24");
+			var audio25 = document.getElementById("play25");
+			var audio27 = document.getElementById("play27");
+			audioBG.pause();
+			audio24.pause();
+			audio25.play();
+			audio27.pause();
+		}
+		function play27() {
+			var audioBG = document.getElementById("playBG");
+			var audio24 = document.getElementById("play24");
+			var audio25 = document.getElementById("play25");
+			var audio27 = document.getElementById("play27");
+			audioBG.pause();
+			audio24.pause();
+			audio25.pause();
+			audio27.play();
+		}
+	/** End of play music **/
+
+	/** Start of popup JS **/
+		// Get DOM Elements
+		const modal = document.querySelector('#my-modal');
+		const closeBtn = document.querySelector('.close');
+		const home = document.querySelector('#nav');
+
+		// Events
+		document.addEventListener('DOMContentLoaded', openModal);
+		closeBtn.addEventListener('click', closeModal);
+		window.addEventListener('click', outsideClick);
+
+		// Open
+		function openModal() {
+			modal.style.display = 'block';
+		}
+
+		// Close
+		function closeModal() {
+			modal.style.display = 'none';
+		}
+
+		// Close If Outside Click
+		function outsideClick(e) {
+			if (e.target == modal) {
+				modal.style.display = 'none';
+			}
+		}
+	/** End of popup JS **/
 
 	/** Start of Question page **/
 		function goToQuestion() {
@@ -71,6 +238,7 @@
 		}
 		function Q25() {
 			document.getElementById('Q25').hidden = false;
+			document.getElementById('Q25ans').focus();
 		}
 		function Q27() {
 			document.getElementById('Q27').hidden = false;
@@ -169,19 +337,31 @@
 	/** Start of Moment count time JS **/
 		moment.locale("zh-hk"); //change to Hong Kong Time
 		var now = moment(new Date()); //todays date
+		var getYear = moment().year();
+		var getMonth = moment().month()+1;
+		var getDate = moment().date();
+		document.getElementById("todayDate").innerHTML = getYear+"年"+getMonth+"月"+getDate+"日";
+		
+		if (getYear == 2020 && getMonth == 12 && getDate == 23) {
+			document.getElementById("todayQuiz").innerHTML = "，請答12月24日嘅題目";
+		} else if (getYear == 2020 && getMonth == 12 && getDate == 24) {
+			document.getElementById("todayQuiz").innerHTML = "，請答12月25日嘅題目";
+		} else if (getYear == 2020 && getMonth == 12 && getDate == 26) {
+			document.getElementById("todayQuiz").innerHTML = "，請答12月27日嘅題目";
+		} else {
+			document.getElementById("todayQuiz").innerHTML = "，今日未有得答住";
+		}
 	/** End of Moment count time JS **/
 
 	/** Start of change button state JS **/
-		switch (true) {
-			case now.date() >= 23:
-				document.getElementById('24btn').disabled = false;
-				break;
-			case now.date() >= 24:
-				document.getElementById('25btn').disabled = false;
-				break;
-			case now.date() >= 26:
-				document.getElementById('27btn').disabled = false;
-				break;
+		if (now.date() >= 23) {
+			document.getElementById('24btn').disabled = false;
+		}
+		if (now.date() >= 24) {
+			document.getElementById('25btn').disabled = false;
+		}
+		if (now.date() >= 26) {
+			document.getElementById('27btn').disabled = false;
 		}
 	/** End of change button state JS **/
 	
