@@ -84,7 +84,7 @@
 		<p><button type="button" class="btn btn-lg btn-primary homePages" onclick="homePage();playBG()">回主頁</button></p>
 	</div>
 	
-	<div id="my-modal" class="modal" onclick="splash()">
+	<div id="my-modal" class="modal">
 		<div class="modal-content">
 			<div class="modal-body">
 				<div class="center popupclose">
@@ -235,12 +235,14 @@
 		// Close
 		function closeModal() {
 			modal.style.display = 'none';
+			splash();
 		}
 
 		// Close If Outside Click
 		function outsideClick(e) {
 			if (e.target == modal) {
 				modal.style.display = 'none';
+				splash();
 			}
 		}
 	/** End of popup JS **/
@@ -354,13 +356,17 @@
 		document.getElementById("todayDate").innerHTML = getYear+"年"+getMonth+"月"+getDate+"日";
 		
 		if (getYear == 2020 && getMonth == 12 && getDate == 23) {
-			document.getElementById("todayQuiz").innerHTML = "，請答12月24日嘅題目";
+			document.getElementById("todayQuiz").innerHTML = "，可以答12月24日嘅題目";
 		} else if (getYear == 2020 && getMonth == 12 && getDate == 24) {
-			document.getElementById("todayQuiz").innerHTML = "，請答12月25日嘅題目";
-		} else if (getYear == 2020 && getMonth == 12 && getDate == 26) {
-			document.getElementById("todayQuiz").innerHTML = "，請答12月27日嘅題目";
+			document.getElementById("todayQuiz").innerHTML = "，可以答12月24同25日嘅題目";
+		} else if (getYear == 2020 && getMonth == 12 && (getDate == 26 || getDate == 27)) {
+			document.getElementById("todayQuiz").innerHTML = "，可以答12月27日嘅題目";
 		} else {
-			document.getElementById("todayQuiz").innerHTML = "，今日未有得答住";
+			if (getYear >= 2020 && getMonth >= 12 && getDate >= 28) {
+				document.getElementById("todayQuiz").innerHTML = "，活動已經過左啦~";
+			} else {
+				document.getElementById("todayQuiz").innerHTML = "，今日未有得答新題目住";
+			}
 		}
 	/** End of Moment count time JS **/
 
