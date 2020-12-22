@@ -12,6 +12,12 @@
 	<title>2020 Christmas event</title>
 </head>
 <body background="pic/bg.png">
+	<div class="splash">
+		<div id="splash">
+			<img src="pic/icon.png" width="90%"><br>
+			<img src="pic/click.webp" onClick="enterWebsite();playBG()">
+		</div>
+	</div>
 	<div id="snow"></div>
 	<audio loop id="playBG">
 		<source src="mp3/JingleBells.mp3">
@@ -78,14 +84,14 @@
 		<p><button type="button" class="btn btn-lg btn-primary homePages" onclick="homePage();playBG()">回主頁</button></p>
 	</div>
 	
-	<div id="my-modal" class="modal" onclick="playBG()">
+	<div id="my-modal" class="modal" onclick="splash()">
 		<div class="modal-content">
 			<div class="modal-body">
 				<div class="center popupclose">
 					<p><span class="close">&times;</span></p><br><br>
 				</div>
 				<div class="position-absolute top-50 start-50 translate-middle center">
-					<strong><h1>歡迎嚟到聖誕Quiz之答岩就知邊到等~</h1></strong><br>
+					<strong><h1>公告</h1></strong><br>
 					<strong><h3>今日係<span id="todayDate"></span><span id="todayQuiz"></span></h3></strong>
 				</div>
 			</div>
@@ -93,6 +99,14 @@
 	</div>
 
 	<script>
+	/** Start of splash JS **/
+		function splash() {
+			document.getElementById("splash").className = "fade-in";
+		}
+		function enterWebsite() {
+			document.getElementsByClassName("splash")[0].classList.add("fade-out");
+		}
+	/** End of splash JS **/
 	/** Start of snow JS **/
 		document.addEventListener('DOMContentLoaded', function(){
 		var script = document.createElement('script');
