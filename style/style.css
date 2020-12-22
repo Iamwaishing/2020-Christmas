@@ -179,3 +179,11 @@ p {
 #splash img {
 cursor: pointer;
 }
+
+button.float{
+	position:fixed;
+	width:auto;
+	bottom:15px;
+	right:15px;
+	font-size: 15px!important;
+}
