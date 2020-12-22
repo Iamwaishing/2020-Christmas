@@ -175,3 +175,7 @@ p {
 	background-size: cover;
 	background-color: #464646;
 }
+
+#splash img {
+cursor: pointer;
+}
