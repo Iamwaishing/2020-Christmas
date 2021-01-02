@@ -356,7 +356,7 @@
 		var getMonth = moment().month()+1;
 		var getDate = moment().date();
 		document.getElementById("todayDate").innerHTML = getYear+"年"+getMonth+"月"+getDate+"日";
-		
+		console.log(getYear);
 		if (getYear == 2020 && getMonth == 12 && getDate == 23) {
 			document.getElementById("todayQuiz").innerHTML = "，可以答12月24日嘅題目";
 		} else if (getYear == 2020 && getMonth == 12 && getDate == 24) {
@@ -364,7 +364,7 @@
 		} else if (getYear == 2020 && getMonth == 12 && (getDate == 26 || getDate == 27)) {
 			document.getElementById("todayQuiz").innerHTML = "，可以答12月27日嘅題目";
 		} else {
-			if (getYear >= 2020 && getMonth >= 12 && getDate >= 28) {
+			if (getYear >= 2020 && getMonth >= 12 && getDate >= 28 || getYear >= 2021) {
 				document.getElementById("todayQuiz").innerHTML = "，活動已經過左啦~";
 			} else {
 				document.getElementById("todayQuiz").innerHTML = "，今日未有得答新題目住";
@@ -373,13 +373,13 @@
 	/** End of Moment count time JS **/
 
 	/** Start of change button state JS **/
-		if (now.date() >= 23) {
+		if (now.date() >= 23 || getYear >= 2021) {
 			document.getElementById('24btn').disabled = false;
 		}
-		if (now.date() >= 24) {
+		if (now.date() >= 24 || getYear >= 2021) {
 			document.getElementById('25btn').disabled = false;
 		}
-		if (now.date() >= 26) {
+		if (now.date() >= 26 || getYear >= 2021) {
 			document.getElementById('27btn').disabled = false;
 		}
 	/** End of change button state JS **/
